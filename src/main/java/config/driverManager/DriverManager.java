@@ -22,6 +22,7 @@ public class DriverManager {
             System.setProperty("webdriver.chrome.driver", chromeDriverLoc);
             driver = new ChromeDriver();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
+            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         }
         return driver;
     }
