@@ -25,7 +25,7 @@ public class CalculatorCases extends TestBuilder {
     }
 
     @Test
-    public void homeTask2(){
+    public void homeTask2() {
         clickOnRadaianButton();
         enterCosinusExpression(Math.PI);
         clickOnEqualButton();
@@ -33,7 +33,7 @@ public class CalculatorCases extends TestBuilder {
     }
 
     @Test
-    public void homeTask3(){
+    public void homeTask3() {
         clickOnSqrtButton();
         enterNumber(81);
         clickOnEqualButton();
@@ -41,7 +41,7 @@ public class CalculatorCases extends TestBuilder {
     }
 
     @Test
-    public void homeTask4(){
+    public void homeTask4() {
         checkHistory(3);
     }
 

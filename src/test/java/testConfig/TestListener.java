@@ -1,7 +1,6 @@
 package testConfig;
 
 import logging.Log;
-
 import org.apache.tools.ant.util.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
@@ -17,8 +16,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static config.driverManager.DriverManager.webDriver;
 import static config.driverManager.DriverManager.projectPath;
+import static config.driverManager.DriverManager.webDriver;
 
 public class TestListener extends TestListenerAdapter {
 

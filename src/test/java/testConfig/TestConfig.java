@@ -25,7 +25,7 @@ public class TestConfig {
     }
 
     @AfterTest
-    public void thearDown(){
+    public void thearDown() {
         DriverManager.quitDriver();
     }
 
