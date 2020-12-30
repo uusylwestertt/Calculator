@@ -13,7 +13,7 @@ public class TestBuilder extends TestConfig {
         page.calculatorPage.acceptPrivacy();
     }
 
-    protected void enterNumber(double number) {
+    protected void enterNumber(int number){
         page.calculatorPage.enterNumber(number);
     }
 
@@ -46,5 +46,13 @@ public class TestBuilder extends TestConfig {
 
     protected void clickOnRadaianButton(){
         page.calculatorPage.clickOnRadianButton();
+    }
+
+    protected void clickOnSqrtButton(){
+        page.calculatorPage.clickOnSqrtButton();
+    }
+
+    protected void checkHistory(int number){
+        page.calculatorPage.checkHistory(number);
     }
 }

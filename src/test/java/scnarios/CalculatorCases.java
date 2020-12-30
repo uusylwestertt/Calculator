@@ -11,6 +11,7 @@ public class CalculatorCases extends TestBuilder {
 
     @Test
     public void homeTask1() {
+        acceptPrivacy();
         enterNumber(35);
         clickOnMultiplicateButton();
         enterNumber(999);
@@ -29,6 +30,19 @@ public class CalculatorCases extends TestBuilder {
         enterCosinusExpression(Math.PI);
         clickOnEqualButton();
         verifyResult(-1);
+    }
+
+    @Test
+    public void homeTask3(){
+        clickOnSqrtButton();
+        enterNumber(81);
+        clickOnEqualButton();
+        verifyResult(9);
+    }
+
+    @Test
+    public void homeTask4(){
+        checkHistory(3);
     }
 
 

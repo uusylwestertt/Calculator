@@ -4,6 +4,9 @@ import interactions.Interactions;
 import logging.Log;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.List;
 
 public class CalculatorPage extends Interactions {
 
@@ -17,15 +20,21 @@ public class CalculatorPage extends Interactions {
     private By dotButton = By.id("BtnDot");
     private By closingBracketButton = By.id("BtnParanR");
     private By radianButton = By.cssSelector(".options label[title='Radian']");
+    private By sqrtButton = By.id("BtnSqrt");
+    private By historyDropDown = By.id("hist");
 
     private By numberButton(int number) {
         return By.cssSelector("#btns #Btn" + number);
     }
 
+    private List<WebElement> historyList() {
+        return listOfElements(By.cssSelector("#histframe .local [data-inp]"));
+    }
+
+
     public void acceptPrivacy() {
         clickOnElement(acceptBtn);
     }
-
 
     public void enterNumber(Double number) {
         Log.TEST_MESSAGE_CHECK("Entering number: " + number);
@@ -40,6 +49,17 @@ public class CalculatorPage extends Interactions {
                 }
             }
         }
+    }
+
+    public void enterNumber(int number) {
+        Log.TEST_MESSAGE_CHECK("Entering number: " + number);
+        String stringOfNumber = String.valueOf(number);
+        for (int i = 0; i < stringOfNumber.length(); i++) {
+            int valueToEnter = Character.getNumericValue(stringOfNumber.charAt(i));
+            clickOnElement(numberButton(valueToEnter));
+        }
+
+
     }
 
 
@@ -83,5 +103,21 @@ public class CalculatorPage extends Interactions {
     public void clickOnRadianButton() {
         Log.TEST_MESSAGE_CHECK("Click on Radian button");
         clickOnElement(radianButton);
+    }
+
+    public void clickOnSqrtButton() {
+        Log.TEST_MESSAGE_SUCESS("Click on sqrt button");
+        clickOnElement(sqrtButton);
+    }
+
+    public void checkHistory(int number) {
+        Log.TEST_MESSAGE_CHECK("Checking history ");
+        clickOnElement(historyDropDown);
+        System.out.println(historyList().size());
+        Assertions.assertThat(historyList().size()).isEqualTo(number);
+        Log.TEST_MESSAGE_SUCESS("History is displayed properly with previously executed operations: ");
+        for (int i = 0; i < historyList().size(); i++) {
+            Log.TEST_MESSAGE_SUCESS(getElementText(historyList().get(i)));
+        }
     }
 }
