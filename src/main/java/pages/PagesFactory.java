@@ -4,5 +4,5 @@ import pages.caclculatorPages.CalculatorPage;
 
 public class PagesFactory {
 
-  public  CalculatorPage calculatorPage = new CalculatorPage();
+    public CalculatorPage calculatorPage = new CalculatorPage();
 }

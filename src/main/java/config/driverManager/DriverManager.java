@@ -8,34 +8,33 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-
 import static common.Constatnt.TIMEOUT;
 
 public class DriverManager {
 
 
-    public static WebDriver driver;
+    public static WebDriver webDriver;
     public static String projectPath = System.getProperty("user.dir");
     private static String chromeDriverLoc = projectPath + "/libs/chromedriver.exe";
 
     public static WebDriver createDriver() {
-        if (driver == null) {
-            Log.DEBUG_MESSAGE_CHECK("Starting driver");
+        if (webDriver == null) {
+            Log.DEBUG_MESSAGE_CHECK("Starting webDriver");
             System.setProperty("webdriver.chrome.driver", chromeDriverLoc);
-            driver = new ChromeDriver();
-            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
-            new WebDriverWait(driver, Duration.ofSeconds(30)).until(
+            webDriver = new ChromeDriver();
+            webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
+            new WebDriverWait(webDriver, Duration.ofSeconds(30)).until(
                     webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
         }
-        return driver;
+        return webDriver;
     }
 
 
     public static void quitDriver() {
-        if (driver != null) {
-            Log.DEBUG_MESSAGE_CHECK("Closing driver");
-            driver.quit();
-            driver = null;
+        if (webDriver != null) {
+            Log.DEBUG_MESSAGE_CHECK("Closing webDriver");
+            webDriver.quit();
+            webDriver = null;
         }
     }
 

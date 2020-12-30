@@ -17,7 +17,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static config.driverManager.DriverManager.driver;
+import static config.driverManager.DriverManager.webDriver;
 import static config.driverManager.DriverManager.projectPath;
 
 public class TestListener extends TestListenerAdapter {
@@ -36,7 +36,7 @@ public class TestListener extends TestListenerAdapter {
     private void takeScreenshot(String methodName) {
         try {
             Log.DEBUG_MESSAGE_CHECK("Taking screenshot");
-            File fileScreenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+            File fileScreenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
             String file_name = methodName + "_" + ".jpg";
             saveFile(fileScreenshot, file_name);
         } catch (IOException exception) {
