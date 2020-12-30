@@ -7,7 +7,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+
 
 import static common.Constatnt.TIMEOUT;
 
@@ -15,7 +15,7 @@ public class DriverManager {
 
 
     public static WebDriver driver;
-    private static String projectPath = System.getProperty("user.dir");
+    public static String projectPath = System.getProperty("user.dir");
     private static String chromeDriverLoc = projectPath + "/libs/chromedriver.exe";
 
     public static WebDriver createDriver() {
@@ -35,6 +35,7 @@ public class DriverManager {
         if (driver != null) {
             Log.DEBUG_MESSAGE_CHECK("Closing driver");
             driver.quit();
+            driver = null;
         }
     }
 
