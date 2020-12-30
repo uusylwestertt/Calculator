@@ -1,5 +1,6 @@
 package testConfig;
 
+import io.qameta.allure.Attachment;
 import logging.Log;
 import org.apache.tools.ant.util.FileUtils;
 import org.openqa.selenium.OutputType;
@@ -31,6 +32,13 @@ public class TestListener extends TestListenerAdapter {
     private String testMetodName(ITestResult result) {
         return result.getMethod().getConstructorOrMethod().getName();
     }
+
+
+    @Attachment(value = "Screenshot", type = "image/jpg")
+    public byte[] saveScrenshotJPG() {
+        return ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
+    }
+
 
     private void takeScreenshot(String methodName) {
         try {
@@ -67,7 +75,7 @@ public class TestListener extends TestListenerAdapter {
 
     @Override
     public void onTestFailure(ITestResult result) {
-        takeScreenshot(result.getMethod().getMethodName());
+        saveScrenshotJPG();
         Log.TEST_MESSAGE_FAIL("\n" +
                 "  _______________________   _________    ______    __________ \n" +
                 " /_  __/ ____/ ___/_  __/  / ____/   |  /  _/ /   / ____/ __ \\\n" +
