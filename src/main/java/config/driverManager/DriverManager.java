@@ -1,8 +1,10 @@
 package config.driverManager;
 
 import logging.Log;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.concurrent.TimeUnit;
@@ -22,7 +24,8 @@ public class DriverManager {
             System.setProperty("webdriver.chrome.driver", chromeDriverLoc);
             driver = new ChromeDriver();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
-            driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+            new WebDriverWait(driver, Duration.ofSeconds(30)).until(
+                    webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
         }
         return driver;
     }
