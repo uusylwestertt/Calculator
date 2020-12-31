@@ -5,6 +5,8 @@ import logging.Log;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
+import pages.caclculatorPages.CalculatorPage;
 
 import static config.driverManager.DriverManager.webDriver;
 
@@ -12,15 +14,20 @@ import static config.driverManager.DriverManager.webDriver;
 public class TestConfig {
 
 
-    @BeforeMethod
-    public void beforeTest() {
+    @BeforeSuite
+    public void startBeforeSuite(){
         DriverManager.createDriver();
         openUrl("http://web2.0calc.com/");
     }
 
+    @BeforeMethod
+    public void beforeMethod() {
+        new CalculatorPage().clickOnClearButton();
+    }
+
 
     @AfterMethod
-    public void afterTest() {
+    public void afterMethod() {
         webDriver.navigate().refresh();
     }
 

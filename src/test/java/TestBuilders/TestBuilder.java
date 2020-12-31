@@ -1,7 +1,6 @@
 package TestBuilders;
 
 
-import io.qameta.allure.Step;
 import pages.PagesFactory;
 import testConfig.TestConfig;
 
@@ -10,7 +9,7 @@ public class TestBuilder extends TestConfig {
 
     PagesFactory page = new PagesFactory();
 
-    @Step("Accept privacy")
+
     protected void acceptPrivacy() {
         page.calculatorPage.acceptPrivacy();
     }

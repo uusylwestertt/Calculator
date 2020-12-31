@@ -22,6 +22,7 @@ public class CalculatorPage extends Interactions {
     private By radianButton = By.cssSelector(".options label[title='Radian']");
     private By sqrtButton = By.id("BtnSqrt");
     private By historyDropDown = By.id("hist");
+    private By clearBtn = By.id("BtnClear");
 
     private By numberButton(int number) {
         return By.cssSelector("#btns #Btn" + number);
@@ -119,5 +120,9 @@ public class CalculatorPage extends Interactions {
         for (int i = 0; i < historyList().size(); i++) {
             Log.TEST_MESSAGE_SUCESS(getElementText(historyList().get(i)));
         }
+    }
+
+    public void clickOnClearButton() {
+        clickOnElement(clearBtn);
     }
 }
