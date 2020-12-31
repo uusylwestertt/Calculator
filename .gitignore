@@ -1,6 +1,7 @@
 # IntelliJ project files
 .gradle/
-/allure-results/
-/gradle/
-/.idea/
+/allure-results/*
+gradle/
+build/*
+.idea/*
 /build/
