@@ -49,7 +49,7 @@ public class CalculatorCases extends TestBuilder {
     }
 
     @Epic("Calculator test")
-    @Description( "Press history dropdown and assert that the list contains the 3 operations executed e.g. 35*999+(100/4)=, cos(pi),sqrt(81)")
+    @Description("Press history dropdown and assert that the list contains the 3 operations executed e.g. 35*999+(100/4)=, cos(pi),sqrt(81)")
     @Test()
     public void homeTask4() {
         checkHistory(3);

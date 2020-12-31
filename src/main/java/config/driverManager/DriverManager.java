@@ -7,7 +7,6 @@ import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.BrowserType;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -23,7 +22,7 @@ public class DriverManager {
     private static String firefoxDriverLoc = projectPath + "/libs/geckoDriver.exe";
     public static GetProperties properties = new GetProperties();
 
-    public  WebDriver createDriver(BrowserTypes browser) {
+    public WebDriver createDriver(BrowserTypes browser) {
 
         switch (browser) {
             case CHROME:
@@ -40,7 +39,7 @@ public class DriverManager {
     }
 
 
-    private  void createChrmeDriver() {
+    private void createChrmeDriver() {
         Log.DEBUG_MESSAGE_CHECK("Starting webDriver");
         System.setProperty("webdriver.chrome.driver", chromeDriverLoc);
         webDriver = new ChromeDriver();
@@ -49,7 +48,7 @@ public class DriverManager {
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
 
-    private  void createFirefoxDriver() {
+    private void createFirefoxDriver() {
         Log.DEBUG_MESSAGE_CHECK("Starting webDriver");
         System.setProperty("webdriver.gecko.driver", firefoxDriverLoc);
         webDriver = new FirefoxDriver();
@@ -59,7 +58,7 @@ public class DriverManager {
     }
 
 
-    public  void quitDriver() {
+    public void quitDriver() {
         if (webDriver != null) {
             Log.DEBUG_MESSAGE_CHECK("Closing webDriver");
             webDriver.quit();
@@ -75,9 +74,9 @@ public class DriverManager {
 
     public void setupDriver() {
         if (properties.getBrowserName().equals(BrowserTypes.CHROME.getName())) {
-         createDriver(BrowserTypes.CHROME);
+            createDriver(BrowserTypes.CHROME);
         } else {
-          createDriver(BrowserTypes.FIREFOX);
+            createDriver(BrowserTypes.FIREFOX);
         }
     }
 

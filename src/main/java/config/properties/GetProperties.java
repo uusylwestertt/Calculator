@@ -9,7 +9,6 @@ public class GetProperties extends ArgumentParser {
     private Properties properties;
 
 
-
     public String getProperty(String value) {
         getParameters();
         String property;

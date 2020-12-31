@@ -7,21 +7,21 @@ public class ArgumentParser {
     public HashMap<String, String> parametersFromGradle = new HashMap<>();
 
 
-    protected   void getParameters() {
-        try{
+    protected void getParameters() {
+        try {
             String args = System.getProperty("appArgs");
             for (String parameter : args.split(";")) {
                 if (!parameter.equals("")) {
                     addArgsToTheList(parameter);
                 }
             }
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
 
         }
 
     }
 
-    private  void addArgsToTheList(String parameter) {
+    private void addArgsToTheList(String parameter) {
         String[] splitedParameters = parameter.split(";");
         for (String nameOfParameter : splitedParameters) {
             String[] partial = nameOfParameter.split("=");
@@ -34,7 +34,7 @@ public class ArgumentParser {
     }
 
 
-    protected  boolean argumentListHaveContent() {
+    protected boolean argumentListHaveContent() {
         return parametersFromGradle.size() > 0;
     }
 

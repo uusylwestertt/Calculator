@@ -2,7 +2,6 @@ package testConfig;
 
 import io.qameta.allure.Attachment;
 import logging.Log;
-import org.apache.tools.ant.util.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.ITestContext;
@@ -11,13 +10,11 @@ import org.testng.ITestResult;
 import org.testng.TestListenerAdapter;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-import static config.driverManager.DriverManager.projectPath;
 import static config.driverManager.DriverManager.webDriver;
 
 public class TestListener extends TestListenerAdapter {
@@ -39,26 +36,6 @@ public class TestListener extends TestListenerAdapter {
         return ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.BYTES);
     }
 
-
-    private void takeScreenshot(String methodName) {
-        try {
-            Log.DEBUG_MESSAGE_CHECK("Taking screenshot");
-            File fileScreenshot = ((TakesScreenshot) webDriver).getScreenshotAs(OutputType.FILE);
-            String file_name = methodName + "_" + ".jpg";
-            saveFile(fileScreenshot, file_name);
-        } catch (IOException exception) {
-            Log.DEBUG_MESSAGE_CHECK("Screenshot exception !!!!!!!");
-            exception.printStackTrace();
-        }
-    }
-
-
-    private void saveFile(File file, String file_name) throws IOException {
-        File screenshotsFolder = new File(projectPath + "/screenshots");
-        screenshotsFolder.mkdir();
-        FileUtils.getFileUtils().copyFile(file, new File(screenshotsFolder + "/" + file_name));
-        Log.TEST_MESSAGE_CHECK(String.format("Screenshot saved in directory: %s/%s", screenshotsFolder, file_name));
-    }
 
     @Override
     public void onTestStart(ITestResult result) {
