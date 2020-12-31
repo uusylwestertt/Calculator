@@ -50,14 +50,14 @@ public class GetProperties extends ArgumentParser {
 
 
     public String getBrowserName() {
-        String deviceName;
+        String browserName;
         try {
             if (getProperty("browser") == null) {
                 throw new Exception("Missing parameter " + "\"browser\"" + " in test.properties file");
             } else {
-                deviceName = getProperty("browser");
-                if (!deviceName.equals("")) {
-                    return deviceName.toLowerCase();
+                browserName = getProperty("browser");
+                if (!browserName.equals("")) {
+                    return browserName.toLowerCase();
                 } else {
                     throw new Exception("Parameter : " + "\"browser\"" + " is empty in test.properties file !!!");
                 }

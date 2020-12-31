@@ -44,7 +44,7 @@ public class TestConfig {
     }
 
     private void setupDriver() {
-        if (properties.getBrowserName().equals(BrowserTypes.CHROME)) {
+        if (properties.getBrowserName().equals(BrowserTypes.CHROME.getName())) {
             DriverManager.createDriver(BrowserTypes.CHROME);
         } else {
             DriverManager.createDriver(BrowserTypes.FIREFOX);

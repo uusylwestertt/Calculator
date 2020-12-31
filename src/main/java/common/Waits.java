@@ -15,13 +15,14 @@ import static config.driverManager.DriverManager.webDriver;
 public class Waits {
 
     protected WebElement isElementPresent(By locator) {
-        new WebDriverWait(webDriver, Duration.ofSeconds(TIMEOUT)).until(ExpectedConditions.elementToBeClickable(locator));
+
         new WebDriverWait(webDriver, Duration.ofSeconds(TIMEOUT)).until(ExpectedConditions.visibilityOfElementLocated(locator));
-        return new WebDriverWait(webDriver, Duration.ofSeconds(TIMEOUT)).until(ExpectedConditions.presenceOfElementLocated(locator));
+        new WebDriverWait(webDriver, Duration.ofSeconds(TIMEOUT)).until(ExpectedConditions.presenceOfElementLocated(locator));
+        return new WebDriverWait(webDriver, Duration.ofSeconds(TIMEOUT)).until(ExpectedConditions.elementToBeClickable(locator));
     }
 
     protected WebElement isElementPresent(WebElement element) {
-        new WebDriverWait(webDriver, Duration.ofSeconds(TIMEOUT)).until(ExpectedConditions.elementToBeClickable(element));
+        new WebDriverWait(webDriver, Duration.ofSeconds(TIMEOUT)).until(ExpectedConditions.visibilityOf(element));
         return new WebDriverWait(webDriver, Duration.ofSeconds(TIMEOUT)).until(ExpectedConditions.elementToBeClickable(element));
 
     }

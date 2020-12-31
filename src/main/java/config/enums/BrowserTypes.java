@@ -9,4 +9,8 @@ public enum BrowserTypes {
         this.name = name;
     }
 
+    public String getName(){
+        return name;
+    }
+
 }
