@@ -114,7 +114,6 @@ public class CalculatorPage extends Interactions {
     public void checkHistory(int number) {
         Log.TEST_MESSAGE_CHECK("Checking history ");
         clickOnElement(historyDropDown);
-        System.out.println(historyList().size());
         Assertions.assertThat(historyList().size()).isEqualTo(number);
         Log.TEST_MESSAGE_SUCESS("History is displayed properly with previously executed operations: ");
         for (int i = 0; i < historyList().size(); i++) {
