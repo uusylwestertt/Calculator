@@ -1,9 +1,17 @@
-plugins {
-    id 'java'
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath "io.qameta.allure:allure-gradle:2.3"
+    }
 }
 
 group 'Calculator'
 version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'io.qameta.allure'
 
 sourceCompatibility = 1.8
 
@@ -11,8 +19,21 @@ repositories {
     mavenCentral()
 }
 
+def props = new Properties()
+file("test.properties").withInputStream { props.load(it) }
+
+allure {
+    version = '2.4.1'
+    aspectjweaver = true
+    autoconfigure = true
+    resultsDir = file(System.getProperty("user.dir")+'/allure-results')
+    reportDir = file('raport/allure-results')
+}
+
+
+
+
 dependencies {
-    implementation group: 'junit', name: 'junit', version: '4.12'
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.0.0-alpha-7'
     testCompile group: 'org.testng', name: 'testng', version: '7.3.0'
     implementation group: 'log4j', name: 'log4j', version: '1.2.17'
@@ -20,12 +41,19 @@ dependencies {
     implementation group: 'org.assertj', name: 'assertj-core', version: '3.18.1'
     // https://mvnrepository.com/artifact/io.qameta.allure/allure-testng
     implementation group: 'io.qameta.allure', name: 'allure-testng', version: '2.13.8'
-
-
 }
-
 
 test {
+    System.setProperty("log4j.defaultInitOverride", "false")
     dependsOn cleanTest
-    useTestNG()
+    test.testLogging.showStandardStreams = false
+    useTestNG() {
+        systemProperties(props)
+        systemProperties = System.getProperties()
+//        options.suites("src/test/resources/testng.xml")
+    }
 }
+
+
+
+
