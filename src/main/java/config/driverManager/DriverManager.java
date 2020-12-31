@@ -23,7 +23,7 @@ public class DriverManager {
     private static String firefoxDriverLoc = projectPath + "/libs/geckoDriver.exe";
     public static GetProperties properties = new GetProperties();
 
-    public static WebDriver createDriver(BrowserTypes browser) {
+    public  WebDriver createDriver(BrowserTypes browser) {
 
         switch (browser) {
             case CHROME:
@@ -40,7 +40,7 @@ public class DriverManager {
     }
 
 
-    private static void createChrmeDriver() {
+    private  void createChrmeDriver() {
         Log.DEBUG_MESSAGE_CHECK("Starting webDriver");
         System.setProperty("webdriver.chrome.driver", chromeDriverLoc);
         webDriver = new ChromeDriver();
@@ -49,7 +49,7 @@ public class DriverManager {
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
 
-    private static void createFirefoxDriver() {
+    private  void createFirefoxDriver() {
         Log.DEBUG_MESSAGE_CHECK("Starting webDriver");
         System.setProperty("webdriver.gecko.driver", firefoxDriverLoc);
         webDriver = new FirefoxDriver();
@@ -59,11 +59,25 @@ public class DriverManager {
     }
 
 
-    public static void quitDriver() {
+    public  void quitDriver() {
         if (webDriver != null) {
             Log.DEBUG_MESSAGE_CHECK("Closing webDriver");
             webDriver.quit();
             webDriver = null;
+        }
+    }
+
+
+    public void openUrl(String url) {
+        Log.TEST_MESSAGE_CHECK("Opening url: " + url);
+        webDriver.get(url);
+    }
+
+    public void setupDriver() {
+        if (properties.getBrowserName().equals(BrowserTypes.CHROME.getName())) {
+         createDriver(BrowserTypes.CHROME);
+        } else {
+          createDriver(BrowserTypes.FIREFOX);
         }
     }
 
