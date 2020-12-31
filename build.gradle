@@ -28,6 +28,7 @@ allure {
     autoconfigure = true
     resultsDir = file(System.getProperty("user.dir")+'/allure-results')
     reportDir = file('raport/allure-results')
+    clean 
 }
 
 
