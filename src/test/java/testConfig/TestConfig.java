@@ -1,5 +1,6 @@
 package testConfig;
 
+import common.browserActions.BrowserActions;
 import config.driverManager.DriverManager;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -7,7 +8,6 @@ import org.testng.annotations.BeforeSuite;
 import pages.caclculatorPages.CalculatorPage;
 
 import static common.Constatnt.BASE_URL;
-import static config.driverManager.DriverManager.webDriver;
 
 
 public class TestConfig {
@@ -25,7 +25,7 @@ public class TestConfig {
     @AfterMethod
     public void afterMethod() {
         new CalculatorPage().clickOnClearButton();
-        webDriver.navigate().refresh();
+        new BrowserActions().refreshPage();
     }
 
     @AfterTest
