@@ -14,6 +14,7 @@
 ## SYSYEM REQURIREMENTS
 
     Windows 10
+    Installed browser Chrome or Firefox
     Java 8 or higher
     Gradle
     Allure 
