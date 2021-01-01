@@ -17,10 +17,10 @@ import static config.driverManager.DriverManager.webDriver;
 public class TestListener extends TestListenerAdapter {
 
 
-    private List<ITestNGMethod> failedtests = new ArrayList();
-    private List<ITestNGMethod> skippedtests = new ArrayList();
-    private List<String> faliedTestsMessages = new ArrayList();
-    private List<Throwable> skipExceptionsList = new ArrayList();
+    private List<ITestNGMethod> failedtests = new ArrayList<>();
+    private List<ITestNGMethod> skippedtests = new ArrayList<>();
+    private List<String> faliedTestsMessages = new ArrayList<>();
+    private List<Throwable> skipExceptionsList = new ArrayList<>();
     private int numberOfTests;
 
     private String testMetodName(ITestResult result) {

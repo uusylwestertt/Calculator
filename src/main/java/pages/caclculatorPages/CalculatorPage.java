@@ -5,7 +5,6 @@ import logging.Log;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import static config.driverManager.DriverManager.webDriver;
 
 import java.util.List;
 
@@ -36,6 +35,7 @@ public class CalculatorPage extends Interactions {
 
 
     public void acceptPrivacy() {
+        Log.TEST_MESSAGE_CHECK("Accept privacy");
         clickOnElement(acceptBtn);
     }
 
@@ -115,7 +115,7 @@ public class CalculatorPage extends Interactions {
         clickOnElement(sqrtButton);
     }
 
-    public void clickOnHistoryButton(){
+    public void clickOnHistoryButton() {
         Log.TEST_MESSAGE_SUCESS("Click on history button");
         clickOnElement(historyDropDown);
     }
