@@ -5,6 +5,7 @@
   This framework is writed in Gradle 5.6.4 with tools:  Selenium, TestNG and Allure reports.
   Framework giving possibility automate operations on calculator page: https://web2.0calc.com/
   This framework is sample to show how can be framework to automate pages using mentioned tools.
+ 
   Project created on Windows 10. Tests can be runed on two browswers: Chrome and Firefox.
   
   
@@ -38,9 +39,11 @@
  
 #####    4. Project have folder: "libs" where are placed drivers for browsers. Check your browser version and download correct driver and put them in to the "libs" folder
 
-######   For this moment is placed chromedriver for Chrome 87 and geckodriver for newest version Firefox              
+######   For this moment is placed chromedriver for Chrome 87 and geckodriver for newest version Firefox     
+         
 
-#####    5. To setup browser type set variable: "chrome" or "firefox" in file: test.properties
+#####    5. To setup browser type set variable: "chrome" or "firefox" in file: test.properties (after that type browser will be set as default )
+######   In next section will be info about how to change browser from CMD
 
 
  
@@ -65,12 +68,21 @@
 
      gradle test -i --tests scenarios.CalculatorCases.<testName>
      
+#####    6. To change browser type fe: firefox enter command
+     
+          gradle test -i -DappArgs="browser=firefox"
+     
 #####    Comands explanation
 
      gradle test - main comand to run tests in gradle (task test is created in build.gradle file)
+     
      -i          - this option printing logs in console
+     
      --tests     - filter for tests
+     
      scenarios.CalculatorCases.<testName> - path to test class and single test
+     
+     -DappArgs="browser=firefox"  - to changing parameters from file test.properties
      
      
 ## OPENING ALLURE REPORT
