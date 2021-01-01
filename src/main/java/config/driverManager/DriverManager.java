@@ -40,21 +40,17 @@ public class DriverManager {
 
 
     private void createChrmeDriver() {
-        Log.DEBUG_MESSAGE_CHECK("Starting webDriver");
+        Log.TEST_MESSAGE_SUCESS("Starting Chromedriver");
         System.setProperty("webdriver.chrome.driver", chromeDriverLoc);
         webDriver = new ChromeDriver();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
-        new WebDriverWait(webDriver, Duration.ofSeconds(30)).until(
-                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
 
     private void createFirefoxDriver() {
-        Log.DEBUG_MESSAGE_CHECK("Starting webDriver");
+        Log.TEST_MESSAGE_SUCESS("Starting Firefoxdriver");
         System.setProperty("webdriver.gecko.driver", firefoxDriverLoc);
         webDriver = new FirefoxDriver();
         webDriver.manage().timeouts().implicitlyWait(Duration.ofSeconds(TIMEOUT));
-        new WebDriverWait(webDriver, Duration.ofSeconds(30)).until(
-                webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
 
 
