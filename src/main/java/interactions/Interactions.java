@@ -19,7 +19,7 @@ public class Interactions extends BasePage {
 
     protected String getElementText(WebElement element) {
         Log.DEBUG_MESSAGE_CHECK("Getting text from webElement");
-        return isElementPresent(element).getText();
+        return isWebElementPresent(element).getText();
     }
 
 }

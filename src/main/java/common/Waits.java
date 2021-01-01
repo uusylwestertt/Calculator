@@ -21,7 +21,7 @@ public class Waits {
         return new WebDriverWait(webDriver, Duration.ofSeconds(TIMEOUT)).until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    protected WebElement isElementPresent(WebElement element) {
+    protected WebElement isWebElementPresent(WebElement element) {
         new WebDriverWait(webDriver, Duration.ofSeconds(TIMEOUT)).until(ExpectedConditions.visibilityOf(element));
         return new WebDriverWait(webDriver, Duration.ofSeconds(TIMEOUT)).until(ExpectedConditions.elementToBeClickable(element));
 
