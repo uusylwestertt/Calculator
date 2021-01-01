@@ -5,6 +5,7 @@ import logging.Log;
 import org.assertj.core.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import static config.driverManager.DriverManager.webDriver;
 
 import java.util.List;
 
@@ -23,6 +24,7 @@ public class CalculatorPage extends Interactions {
     private By sqrtButton = By.id("BtnSqrt");
     private By historyDropDown = By.id("hist");
     private By clearBtn = By.id("BtnClear");
+    private By piButton = By.id("BtnPi");
 
     private By numberButton(int number) {
         return By.cssSelector("#btns #Btn" + number);
@@ -86,15 +88,20 @@ public class CalculatorPage extends Interactions {
 
 
     public void verifyResult(int expectedResult) {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         Log.TEST_MESSAGE_CHECK("Checking if result is the same as expected: " + expectedResult);
         Assertions.assertThat(getElementText(resultInput)).isEqualTo(String.valueOf(expectedResult));
         Log.TEST_MESSAGE_SUCESS("Result is properly");
     }
 
-    public void enterCosinusExpression(Double value) {
-        Log.TEST_MESSAGE_CHECK("Enter cosinus expression for value: " + value);
+    public void enterCosinusExpression() {
+        Log.TEST_MESSAGE_CHECK("Enter cosinus expression for Pi");
         clickOnElement(cosButton);
-        enterNumber(value);
+        clickOnElement(piButton);
         clickOnElement(closingBracketButton);
     }
 
@@ -115,7 +122,6 @@ public class CalculatorPage extends Interactions {
 
     public void checkHistory(int number) {
         Log.TEST_MESSAGE_CHECK("Checking history ");
-        clickOnElement(historyDropDown);
         Assertions.assertThat(historyList().size()).isEqualTo(number);
         Log.TEST_MESSAGE_SUCESS("History is displayed properly with previously executed operations: ");
         for (int i = 0; i < historyList().size(); i++) {

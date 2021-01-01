@@ -131,15 +131,6 @@ public class TestListener extends TestListenerAdapter {
             for (int i = 0; i < failedtests.size(); i++) {
                 Log.TEST_MESSAGE_CHECK("Nr: " + (i + 1) + " " + failedtests.get(i).getMethodName());
                 Log.TEST_MESSAGE_FAIL(faliedTestsMessages.get(i));
-
-                try {
-                    String screenshotName = failedtests.get(i).getMethodName() + ".jpg";
-                    File f = new File("logs" + screenshotName);
-                    URL url = f.toURI().toURL();
-                    Log.TEST_MESSAGE_CHECK("Screenshot: " + url);
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                }
             }
         }
     }

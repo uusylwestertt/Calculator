@@ -47,8 +47,8 @@ public class TestBuilder extends TestConfig {
     }
 
     @Step("Enter cosinus expression")
-    protected void enterCosinusExpression(Double value) {
-        page.calculatorPage.enterCosinusExpression(value);
+    protected void enterCosinusExpression() {
+        page.calculatorPage.enterCosinusExpression();
     }
 
     @Step("Click radial radiobutton")

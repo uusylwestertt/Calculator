@@ -13,19 +13,22 @@ import static common.Constatnt.BASE_URL;
 public class TestConfig {
 
     private DriverManager driverManager;
+    private BrowserActions browserActions;
 
     @BeforeSuite
     public void startBeforeSuite() {
         driverManager = new DriverManager();
+        browserActions = new BrowserActions();
         driverManager.setupDriver();
         driverManager.openUrl(BASE_URL);
+        browserActions.checkIsPageFullyLoaded();
     }
 
 
     @AfterMethod
     public void afterMethod() {
         new CalculatorPage().clickOnClearButton();
-        new BrowserActions().refreshPage();
+       browserActions.refreshPage();
     }
 
     @AfterTest

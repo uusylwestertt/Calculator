@@ -32,7 +32,7 @@ public class CalculatorCases extends TestBuilder {
     @Test()
     public void homeTask2() {
         clickOnRadaianButton();
-        enterCosinusExpression(Math.PI);
+        enterCosinusExpression();
         clickOnEqualButton();
         verifyResult(-1);
     }
