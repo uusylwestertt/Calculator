@@ -24,7 +24,6 @@ public class CalculatorCases extends TestBuilder {
         clickOnModuloButton();
         enterNumber(4);
         clickOnEqualButton();
-        clickOnResultInput();
         verifyResult(34990);
     }
 

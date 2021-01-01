@@ -25,10 +25,6 @@ public class TestBuilder extends TestConfig {
         page.calculatorPage.clickOnMultiplicateButton();
     }
 
-    @Step("Click result button")
-    protected void clickOnResultInput() {
-        page.calculatorPage.clickOnResultInput();
-    }
 
     @Step("Clisk equal button")
     protected void clickOnEqualButton() {
@@ -67,6 +63,7 @@ public class TestBuilder extends TestConfig {
 
     @Step("Check history")
     protected void checkHistory(int number) {
+        page.calculatorPage.clickOnHistoryButton();
         page.calculatorPage.checkHistory(number);
     }
 }

@@ -84,9 +84,6 @@ public class CalculatorPage extends Interactions {
         clickOnElement(moduloButton);
     }
 
-    public void clickOnResultInput() {
-        clickOnElement(resultInput);
-    }
 
     public void verifyResult(int expectedResult) {
         Log.TEST_MESSAGE_CHECK("Checking if result is the same as expected: " + expectedResult);
@@ -109,6 +106,11 @@ public class CalculatorPage extends Interactions {
     public void clickOnSqrtButton() {
         Log.TEST_MESSAGE_SUCESS("Click on sqrt button");
         clickOnElement(sqrtButton);
+    }
+
+    public void clickOnHistoryButton(){
+        Log.TEST_MESSAGE_SUCESS("Click on history button");
+        clickOnElement(historyDropDown);
     }
 
     public void checkHistory(int number) {
